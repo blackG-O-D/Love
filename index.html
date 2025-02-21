@@ -19,11 +19,13 @@
   <script>
 
 const params = new URLSearchParams(window.location.search);
-const srcUrl = params.get('gltf');
-const iosSrcUrl = params.get('usdz');
+const srcUrl = decodeURIComponent(params.get('gltf'));
+const iosSrcUrl = decodeURIComponent(params.get('usdz'));
 
+console.log('srcUrl:', srcUrl, 'iosSrcUrl:', iosSrcUrl);
+document.getElementById("Viewer").src = srcUrl;
+document.getElementById("Viewer").setAttribute("ios-src", iosSrcUrl);
 
-  console.log('srcUrl: ', srcUrl, "  ", iosSrcUrl);
 
     // Set the src and ios-src attributes of the model-viewer element
     var modelViewer = document.getElementById("Viewer");
